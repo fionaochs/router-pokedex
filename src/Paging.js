@@ -11,14 +11,10 @@ export default class Paging extends Component {
         this.updateSearchControls();
         //grab sort=id&pokemon=geo&page=1 from URL
         //set to new searchParams
-    
-        window.addEventListener("hashchange", () => {
-          this.updateSearchControls();
-        });
       }
       updatePage(increment) {
         const { page } = this.state;
-        const queryString = window.location.hash.slice(1);
+        const queryString = this.props.searchQuery;
         const searchParams = new URLSearchParams(queryString);
         searchParams.set("page", page + increment);
     
@@ -26,7 +22,7 @@ export default class Paging extends Component {
       }
       updateSearchControls() {
         const { page } = this.state;
-        const queryString = window.location.hash.slice(1);
+        const queryString = this.props.searchQuery;
         const searchParams = new URLSearchParams(queryString);
          //grab sort=id&pokemon=geo&page=1 from URL
         //set to new searchParams
@@ -53,7 +49,7 @@ export default class Paging extends Component {
     const perPage = 10; 
     const count = this.props.count;
     //parent property from App.js
-    const queryString = window.location.hash.slice(1);
+    const queryString = this.props.searchQuery;
     const searchParams = new URLSearchParams(queryString);
     //grab sort=id&pokemon=geo&page=1 from URL
     //set to new searchParams
@@ -76,6 +72,7 @@ export default class Paging extends Component {
     //calculate number of last page
 
       return <p className="paging">
+    
       <button className="prev"
         onClick={() => this.updatePage(-1)} disabled={pageToUse === 1 ? "true" : ""}
         type="button"> ◀ </button>

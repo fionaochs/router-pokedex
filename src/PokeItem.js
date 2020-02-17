@@ -1,19 +1,20 @@
 import React, { Component } from 'react';
 
 
-export default class Pokemon extends Component {
+export default class PokemonItem extends Component {
     render () {
-        return <li>
+        const { pokemon } = this.props;
+        return <li id="pokemon-item">
             <div id="info-container">
-                <h3>{this.props.pokemon.pokemon}</h3>
+                <h3>{pokemon.pokemon}</h3>
             </div>
             <div id="image-container">
-                <img alt={this.props.pokemon.url_image}
-                    src={this.props.pokemon.url_image}/>
+                <img alt={pokemon.url_image}
+                    src={pokemon.url_image}/>
             </div>
             <div id="abilities">
-                <p>Type: {this.props.pokemon.type_1}</p>
-                <p>Defense: {this.props.pokemon.type_2}</p>
+                <p>Type: {pokemon.type_1}</p>
+                <p>Defense: {pokemon.type_2}</p>
             </div>
             <table>
             <thead>
@@ -27,11 +28,11 @@ export default class Pokemon extends Component {
             </thead>
             <tbody>
                 <tr>
-                    <td>{this.props.pokemon.defense}</td>
-                    <td>{this.props.pokemon.hp}</td>
-                    <td>{this.props.pokemon.special_attack}</td>
-                    <td>{this.props.pokemon.special_defense}</td>
-                    <td>{this.props.pokemon.speed}</td>
+                    <td>{pokemon.defense}</td>
+                    <td>{pokemon.hp}</td>
+                    <td>{pokemon.special_attack}</td>
+                    <td>{pokemon.special_defense}</td>
+                    <td>{pokemon.speed}</td>
                 </tr>
             </tbody>
             </table>

@@ -22,6 +22,7 @@ h1, h2, h3{
 }
 h3{
     margin-top: 0px;
+    text-decoration: none;
 }
 p{
     font-family: 'Oswald';
@@ -70,7 +71,7 @@ section {
     grid-template-columns: auto auto auto auto auto;
 }
 
-.pokemons li {
+#pokemon-item, .PokemonItem{
     list-style: none;
     align-items: center;
     justify-content: space-between;
@@ -87,7 +88,7 @@ section {
     padding: 5px;
 }
 
-.pokemons li h2 {
+.pokemon li h2 {
     font-size: 1.5em;
 }
 
@@ -144,4 +145,35 @@ ul {
 }
 label {
     color: aliceblue;
+}
+a{
+    color: aliceblue;
+    margin: auto;
+    font-family: 'Oswald';
+    font-weight: bold;
+    font-size: 20px;
+}
+form{
+    justify-content: center;
+}
+.aboutMe{
+    list-style: none;
+    align-items: center;
+    justify-content: space-between;
+    text-align: center;
+    height: 350px;
+    width: 99%;
+    min-width: 200px;
+    border: 1px solid rgb(247, 163, 175);
+    background-color: rgb(174, 59, 80);
+    margin-top: 0px;
+    margin-right: 10px;
+    margin-bottom: 10px;
+    margin-left: 10px;
+    padding: 5px;
+}
+#aboutMe{
+    margin-top: 20px;
+    align-content: center;
+
 }

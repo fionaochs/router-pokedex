@@ -9,7 +9,7 @@ export default class PokeList extends Component {
         <section className="options">
             <section className="list-section">
                 <ul className="pokemons">
-                    {this.props.pokedex.map(passedPokemon => <PokeItem pokemon={passedPokemon} />)}
+                    {this.props.pokemon.map(passedPokemon => <PokeItem pokemon={passedPokemon} />)}
                 </ul>
             </section>
         </section>

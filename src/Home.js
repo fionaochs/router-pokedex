@@ -1,41 +1,38 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
+import PokemonItem from './PokeItem.js';
 import Search from './Search.js';
-import Detail from './Detail.js';
-import PokeList from './PokeList.js';
-import About from './About.js';
-import Header from './Header.js';
+import { getPokemon } from './api.js';
 import Paging from './Paging.js';
-import request from 'superagent';
-import Pokemon from './PokeItem.js';
-
-
-import './App.css';
-import { 
-  Route, 
-  Switch,
-  Link,
-  BrowserRouter as Router, 
-} from 'react-router-dom';
 
 export default class App extends Component{
   state = { 
-    searchQuery: this.props.match.params.pokemon,
-    pokedex: [],
+    searchQuery: this.props.match.params.name,
+    pokemon: [],
+    count: 0
  }
  async componentDidMount() {
   if (this.props.match.params.name) {
-      const data = await request.get(`https://alchemy-pokedex.herokuapp.com/api/pokedex?${this.props.match.params.pokemon}`)
+      const data = await getPokemon(this.state.searchQuery);
 
       this.setState({ pokemon: data.body.results })
+  } else {
+      this.setState({ pokemon: []});
   }
 }
 handleSearch = async (e) => {
   e.preventDefault();
+  //prevent form refresh
+  //form allows for enter button to search
+  
 
-  const data = await request.get(`https://alchemy-pokedex.herokuapp.com/api/pokedex?${this.state.searchQuery}`)
+  let data = await getPokemon(this.state.searchQuery);
+   //get data from API and set to state
 
   this.setState({ 
-      pokedex: data.body.results, })
+      pokemon: data.body.results,
+      count: data.body.results.length
+ })
   
 
 this.props.history.push(this.state.searchQuery)
@@ -46,37 +43,27 @@ handleChange = (e) => this.setState({ searchQuery: e.target.value })
 
 
   render () {
-  const { pokedex, count } = this.state;
-
   return (
-    <Router >
-      <div>
-          <Header>
-          <Search
-                searchQuery={this.state.searchQuery}
-                handleSearch={this.handleSearch} 
-                handleChange={this.handleChange}
-            />
-            </Header>
-    
-          <ul>
-              {
-                    this.state.pokedex.map(pokemon => 
-                    <Link to={`pokemon/${pokemon.pokemon}`}> 
-                        <Pokemon pokemon={pokemon} />
-                    </Link>)
-              }
-          </ul>
-          <Switch> 
-            <Route exact path='/PokeList'>
-              <PokeList pokedex={pokedex} />
-            </Route>
-            <Route exact path="/about-me/:other" component={About} />
-            <Route exact path="/pokemon/:charId" component={Detail} />
-          </Switch>
-          <Paging count={count} />
-      </div>
-    </Router>
+    <div className="App">
+    <header className="App-header">
+      <Search 
+          searchQuery={this.state.searchQuery}
+          handleSearch={this.handleSearch} 
+          handleChange={this.handleChange}
+      />
+    </header>
+    <ul className="pokemons">
+        {
+            this.state.pokemon.map(pokemon => 
+            <Link to={`pokemon/${pokemon.pokemon}`}> 
+                    <PokemonItem pokemon={pokemon} />
+            </Link>)
+        }
+    </ul>
+    <Paging totalPages={12} pageNumber={1} />  
+    </div>
   );
 }
 }
+
+ 
