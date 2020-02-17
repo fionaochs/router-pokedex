@@ -13,8 +13,6 @@ import './App.css';
 
 
 export default class App extends Component {
- 
-
   render() {
       return (
         <Router>
@@ -27,16 +25,16 @@ export default class App extends Component {
                 <Route exact path="/about/:other" component={About} />
                 <Route exact path="/pokemon/:pokemon" component={Detail} />
             </Switch>
-                
           </div>
         </Router>
       );
   }
 }
             
-            // look at URL, if only a / go to home page 
-            // :name is variable
-            //   if see character Id then anything after the / go to the character component page 
+  // look at URL, if only a / go to home page 
+  // :name is variable
+  // if see character Id then anything after the / go to the character component page 
+  //switch allows to have conditional between each <Route/>
 
 
     

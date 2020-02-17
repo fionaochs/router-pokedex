@@ -12,4 +12,8 @@ export default class Search extends Component {
         )
     }
 }
+//value of input is searchQuery
+//on form change, handleChange which sets state of searchQuery to e.target.value
+//onSubmit, handleSearch gets pokemon data from API and sets state to data results
+    // pass in searchQuery to getPokemon
        

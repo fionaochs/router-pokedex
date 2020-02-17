@@ -7,10 +7,10 @@ export default class Detail extends Component {
 
     async componentDidMount() {
         const data = await getPokemon(this.props.match.params.pokemon);
-        console.log(data);
+        //use search params to access pokemon API and return selected pokemon
         if (data.body.results) {
         this.setState({ pokemon: data.body.results[0] })
-        }
+        }// set state with first { pokemon } from searched array
     }
     render() {
         const { pokemon } = this.state;
