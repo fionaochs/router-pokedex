@@ -32,9 +32,10 @@ export default class App extends Component {
 }
             
   // look at URL, if only a / go to home page 
-  // :name is variable
+  // :name is variable, parameter, colon indicate what is the argument of the route(/like a function)
+  // anything after a : is assumed to be required in the URL, UNLESS there is a ?
   // if see character Id then anything after the / go to the character component page 
-  //switch allows to have conditional between each <Route/>
+  // switch allows to have conditional between each <Route/>
 
 
     
