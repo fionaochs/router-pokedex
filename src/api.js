@@ -1,10 +1,12 @@
 import request from 'superagent';
 
-export async function getPokemon(pokemon, page, type){
+export async function getPokemon(searchTerm, page, search){
 
-const URL = `https://alchemy-pokedex.herokuapp.com/api/pokedex?pokemon=${pokemon}&type_1=${type}`
-const pageString = (page) ? `&page=${page}` : '';
+const URL = `https://alchemy-pokedex.herokuapp.com/api/pokedex?${searchTerm}=${search}`
+const pageString = (page) ? `&page=${page}&perPage=10` : '';
+
 const pageURL = URL + pageString;
+console.log(pageURL);
 
 const data = await request.get(pageURL);
 return data;

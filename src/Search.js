@@ -5,13 +5,13 @@ export default class Search extends Component {
         return (
             <form onSubmit={this.props.handleSearch}>
                 <input 
-                value={this.props.searchQuery}
+                value={this.props.searchQuery || ''}
                 onChange={this.props.handleChange}/>
                 <button>Search</button>
                 <div id="search-type">
-                        <label>Name: <input id="name-check" type="radio" name="searchtype" value="pokemon" onClick={this.props.handleType}></input></label>
-                        <label>Type: <input type="radio" name="searchtype" value="type" onClick={this.props.handleType}></input></label>
-                        <label>Ability: <input type="radio" name="searchtype" value="ability" onClick={this.props.handleType}></input></label>
+                        <label>Name: <input id="name-check" type="radio" name="type" value="pokemon" onClick={this.props.handleType}></input></label>
+                        <label>Type: <input type="radio" name="type" value="type_1" onClick={this.props.handleType}></input></label>
+                        <label>Ability: <input type="radio" name="type" value="ability" onClick={this.props.handleType}></input></label>
                 </div>
             </form>
         )

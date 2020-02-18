@@ -4,7 +4,7 @@ import React, { Component } from 'react';
 export default class PokemonItem extends Component {
     render () {
         const { pokemon } = this.props;
-        return <li id="pokemon-item">
+        return <li id="pokemon-item" key={pokemon.pokemon}>
             <div id="info-container">
                 <h3>{pokemon.pokemon}</h3>
             </div>

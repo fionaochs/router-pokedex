@@ -6,8 +6,7 @@ export default class Paging extends Component {
     const { totalPokemonResults } = this.props;
     const { page } = this.props;
     const lastPage = Math.ceil(totalPokemonResults / perPage);
-    
-
+    console.log(totalPokemonResults);
     if (!totalPokemonResults) {
       return <p className="paging">No results, try another search</p>;
     }
