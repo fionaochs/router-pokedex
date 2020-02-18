@@ -8,11 +8,9 @@ import Paging from './Paging.js';
 export default class App extends Component{
   state = { 
     searchQuery: this.props.match.params.name,
-    // type: 'pokemon',
     pokemon: [],
     page: 1,
     totalPokemonResults: null,
-    perPage: 10,
     searchTerm: [{ search: "type_1" }, { search: "ability" }, { search: "pokemon" }],
  }
  async componentDidMount() {
@@ -44,6 +42,7 @@ async updatePage(increment) {
         page: newPage,
         totalPokemonResults: newData.body.count
     })
+    //update page with selected search term, pokemon, type, ability
     
 }
 handleSearch = async (e) => {
@@ -62,23 +61,27 @@ handleSearch = async (e) => {
     })
     
     this.props.history.push(this.state.searchQuery)
+    //push search term into search box from URL
     
 }
 
+// handle page changes
 handleNext = e => {
     e.preventDefault();
     this.updatePage(1);
 }
-
 handlePrev = e => {
     e.preventDefault();
     this.updatePage(-1);
 }
+
 handleType = e => {
     this.setState({ searchTerm: e.target.value });
+    //set search term to radio button value
 }
-handleChange = (e) => this.setState({ searchQuery: e.target.value })
 
+handleChange = (e) => this.setState({ searchQuery: e.target.value })
+    //update search query term from search box
 
 render () {
     return (

@@ -128,10 +128,7 @@ table{
 th{
     font-size: 12px;
 }
-/* #input{
-    margin: 0 auto;
-    text-align: center;
-} */
+
 input{
     margin-top: 25px;
     margin-bottom: -10px;
@@ -176,5 +173,24 @@ form{
 #aboutMe{
     margin-top: 20px;
     align-content: center;
+
+}
+#name-check{
+    margin: 10px 10px 10px 5px;
+    color: aliceblue;
+    font-family: 'Oswald';
+    font-weight: bold;
+    font-size: 18px;
+}
+button{
+    margin-left: 5px;
+    font-family: 'Oswald';
+    font-size: 15px;
+    border-radius: 5%;
+    color: rgb(174, 59, 80);
+    
+}
+button:hover{
+    cursor: pointer;
 
 }
