@@ -8,6 +8,7 @@ import Paging from './Paging.js';
 export default class App extends Component{
   state = { 
     searchQuery: this.props.match.params.name,
+    type: 'pokemon',
     pokemon: [],
     page: 1,
     totalPokemonResults: null,
@@ -76,6 +77,9 @@ handlePrev = e => {
     e.preventDefault();
     this.updatePage(-1);
 }
+handleType = e => {
+    this.setState({ type: e.target.value });
+}
 handleChange = (e) => this.setState({ searchQuery: e.target.value })
 
 
@@ -87,6 +91,7 @@ handleChange = (e) => this.setState({ searchQuery: e.target.value })
           searchQuery={this.state.searchQuery}
           handleSearch={this.handleSearch} 
           handleChange={this.handleChange}
+          handleType={this.handleType}
       />
     </header>
     <ul className="pokemons">
